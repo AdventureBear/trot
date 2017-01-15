@@ -1,0 +1,33 @@
+{
+  "name": "trot",
+  "version": "0.0.1",
+  "description": "command line helpers to generate react files and components",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "trot": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdventureBear/trot.git"
+  },
+  "keywords": [
+    "cli",
+    "components",
+    "generator",
+    "react"
+  ],
+  "author": "suzanne-atkinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdventureBear/trot/issues"
+  },
+  "homepage": "https://github.com/AdventureBear/trot#readme"
+}

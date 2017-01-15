@@ -1,0 +1,17 @@
+import React, { Component } from 'react';
+
+class [comp] extends Component {
+    constructor(){
+        super()
+    }
+
+    render(){
+        return (
+            <div>
+                <h1>[comp]</h1>
+            </div>
+
+        )
+    }
+
+}

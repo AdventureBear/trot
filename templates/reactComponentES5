@@ -1,0 +1,13 @@
+import React from 'react'
+
+var [comp] = React.createClass({
+  render: function(){
+   return (
+      <div >
+        <h1>[comp]</h1>
+      </div>
+    )
+  }
+})
+
+export default [comp]
