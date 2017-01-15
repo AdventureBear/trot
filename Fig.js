@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-var Fig = React.createClass({
-  render: function(){
-   return (
-      <div >
-        <h1>[com]</h1>
-      </div>
-    )
-  }
-})
+class Fig extends Component {
+    constructor(){
+        super()
+    }
+
+    render(){
+        return (
+            <div>
+                <h1>Fig</h1>
+            </div>
+
+        )
+    }
+
+}
 
 export default Fig

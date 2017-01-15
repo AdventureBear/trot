@@ -1,3 +1,5 @@
+/* ES6 Syntax */
+
 import React, { Component } from 'react';
 
 class [comp] extends Component {
@@ -15,3 +17,5 @@ class [comp] extends Component {
     }
 
 }
+
+export default [comp]

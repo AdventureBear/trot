@@ -1,4 +1,6 @@
-import React from 'react'
+/* ES5 Syntax */
+
+var React = require('react')
 
 var [comp] = React.createClass({
   render: function(){
@@ -10,4 +12,5 @@ var [comp] = React.createClass({
   }
 })
 
-export default [comp]
+
+module.exports = [comp]

@@ -38,7 +38,7 @@ I searched for a similar command line generator for React but could not find one
 Trot saves on repeated keystrokes, simplify project development and reduce the time required for creating a working app.
 By using this command line interface I was able to think about coding rather than think about syntax and versions (ES5 vs ES6). '
 
-I am still relatively new to JavaScript, Node and React development.  I'm still learning ES6. if you have suggestions for improvements, features or note any errors or corrections, please submit an issue or fork the repo and submit a pull request. 
+I am still relatively new to JavaScript, Node and React development.  I'm still learning ES6. if you have suggestions for improvements, features or note any errors or corrections, please submit an issue or fork the repo and submit a pull request.
 
 ## Installation
 
