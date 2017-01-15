@@ -29,6 +29,11 @@ Creates a file in the working directory:
 
     export default ComponentName
 
+**Additional Options**
+    node app.js -c ComponentName -v 5
+
+The ```-v``` flag allows you to specify either ES5 or ES6 syntax.  ES6 is the default if no ```-v``` flag is used
+
 
 ## Motivation
 
