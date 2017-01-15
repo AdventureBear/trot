@@ -2,12 +2,13 @@
 
 This is a command line helper to create React components.
 
-## Code Example
+## Code Examples
 
-### Command Line
+
+**Command Line**
     node app.js -c ComponentName
 
-### Output
+**Output**
 Creates a file in the working directory:
 
     ComponentName.js
@@ -54,6 +55,19 @@ additional functionality to speed React development.
 Open an issue or fork the rep here [Trot on Github](https://github.com/AdventureBear/trot "Trot on Github")
 
 
+## ToDo List
+
+* Get a few initial users for feedback
+* Submit glaring immediate issues to github or create pull request
+* Add features & improvements
+* Keep this list updated
+
+## Change Log
+
+v0.0.3  Added ES6 Component as default
+v0.0.2  Update Readme
+v0.0.1  First version
+
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+ISC
