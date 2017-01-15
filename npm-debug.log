@@ -1,0 +1,114 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.12.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.8
+3 info using node@v6.9.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/suzanne/Developer/trot',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/suzanne/.npm/trot/0.0.3/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/suzanne/.npm correctMkdir not in flight; initializing
+10 info lifecycle trot@0.0.3~prepublish: trot@0.0.3
+11 silly lifecycle trot@0.0.3~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/suzanne/.npm/trot/0.0.3/package.tgz',
+12 verbose tar pack   '/Users/suzanne/Developer/trot' ]
+13 verbose tarball /Users/suzanne/.npm/trot/0.0.3/package.tgz
+14 verbose folder /Users/suzanne/Developer/trot
+15 verbose addLocalTarball adding from inside cache /Users/suzanne/.npm/trot/0.0.3/package.tgz
+16 verbose correctMkdir /Users/suzanne/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd trot@0.0.3
+18 verbose afterAdd /Users/suzanne/.npm/trot/0.0.3/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/suzanne/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/suzanne/.npm/trot/0.0.3/package/package.json written
+21 silly publish { name: 'trot',
+21 silly publish   version: '0.0.3',
+21 silly publish   description: 'command line helpers to generate react files and components',
+21 silly publish   main: 'app.js',
+21 silly publish   directories: { test: 'test' },
+21 silly publish   dependencies: { commander: '^2.9.0' },
+21 silly publish   devDependencies: {},
+21 silly publish   scripts:
+21 silly publish    { test: 'echo "Error: no test specified" && exit 1',
+21 silly publish      trot: 'node app.js' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/AdventureBear/trot.git' },
+21 silly publish   keywords: [ 'cli', 'components', 'generator', 'react' ],
+21 silly publish   author: { name: 'suzanne-atkinson' },
+21 silly publish   license: 'ISC',
+21 silly publish   bugs: { url: 'https://github.com/AdventureBear/trot/issues' },
+21 silly publish   homepage: 'https://github.com/AdventureBear/trot#readme',
+21 silly publish   readme: '## Synopsis\n\nThis is a command line helper to create React components.\n\n## Code Examples\n\n\n**Command Line**\n    node app.js -c ComponentName\n\n**Output**\nCreates a file in the working directory:\n\n    ComponentName.js\n\n\n\n    import React from \'react\'\n\n    var ComponentName = React.createClass({\n      render: function(){\n       return (\n          <div >\n            <h1>ComponentName</h1>\n          </div>\n        )\n      }\n    })\n\n    export default ComponentName\n\n**Additional Options**\n    node app.js -c ComponentName -v 5\n\nThe ```-v``` flag allows you to specify either ES5 or ES6 syntax.  ES6 is the default if no ```-v``` flag is used\n\n\n## Motivation\n\nI created this while learning react because I became frustrated typing the same boilerplate for every component, often introducing typos as well.\n\nI searched for a similar command line generator for React but could not find one, so I started coding.\n\nTrot saves on repeated keystrokes, simplify project development and reduce the time required for creating a working app.\nBy using this command line interface I was able to think about coding rather than think about syntax and versions (ES5 vs ES6). \'\n\nI am still relatively new to JavaScript, Node and React development.  I\'m still learning ES6. if you have suggestions for improvements, features or note any errors or corrections, please submit an issue or fork the repo and submit a pull request.\n\n## Installation\n\n    npm install trot\n\n\n## Contributors\n\nContributions to this project are welcome and will be recognized here,\nfeel free to create an issue with suggestions for templates or command line flags to include,\nadditional functionality to speed React development.\n\nOpen an issue or fork the rep here [Trot on Github](https://github.com/AdventureBear/trot "Trot on Github")\n\n\n## ToDo List\n\n* Get a few initial users for feedback\n* Submit glaring immediate issues to github or create pull request\n* Add features & improvements\n* Keep this list updated\n\n## Change Log\n\nv0.0.3  Added ES6 Component as default\nv0.0.2  Update Readme\nv0.0.1  First version\n\n## License\n\nISC',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '112843024ed30194dbc9b7feef992b18944af34a',
+21 silly publish   _id: 'trot@0.0.3',
+21 silly publish   _shasum: '16c3b1514831e423694af437ad128b0e0655184b',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name trot
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'trot',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'trot',
+26 silly mapToRegistry   name: 'trot',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/trot
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/suzanne/.npm/trot/0.0.3/package.tgz
+30 verbose request uri https://registry.npmjs.org/trot
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 6:36:53 PM
+33 verbose request using bearer token for auth
+34 verbose request id 45be2f5ee47df2b2
+35 http request PUT https://registry.npmjs.org/trot
+36 http 403 https://registry.npmjs.org/trot
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Sun, 15 Jan 2017 23:36:54 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-iad2629-IAD',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1484523413.823342,VS0,VE635',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/suzanne/.npm/registry.npmjs.org/trot on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 0.0.3." : trot
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1044:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:965:12)
+41 verbose statusCode 403
+42 verbose pkgid trot
+43 verbose cwd /Users/suzanne/Developer/trot
+44 error Darwin 15.6.0
+45 error argv "/usr/local/Cellar/node/0.12.0/bin/node" "/usr/local/bin/npm" "publish"
+46 error node v6.9.0
+47 error npm  v3.10.8
+48 error code E403
+49 error "You cannot publish over the previously published version 0.0.3." : trot
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
