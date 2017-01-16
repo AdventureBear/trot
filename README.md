@@ -6,7 +6,7 @@ This is a command line helper to create React components.
 
 
 **Command Line**
-    node app.js -c ComponentName
+    node trot.js -c ComponentName
 
 **Output**
 Creates a file in the working directory:
@@ -30,7 +30,7 @@ Creates a file in the working directory:
     export default ComponentName
 
 **Additional Options**
-    node app.js -c ComponentName -v 5
+    node trot.js -c ComponentName -v 5
 
 The ```-v``` flag allows you to specify either ES5 or ES6 syntax.  ES6 is the default if no ```-v``` flag is used
 
@@ -68,10 +68,16 @@ Open an issue or fork the rep here [Trot on Github](https://github.com/Adventure
 * Keep this list updated
 
 ## Change Log
+v0.0.4 & v0.0.5
+* Added folder flag ```-f```.  Default will write into current folder, otherwise will create new directory if it does not exist
+* Updated entry file name from app.js to trot.js
+* Cleaned up .gitignore file
 
-v0.0.3  Added ES6 Component as default
-v0.0.2  Update Readme
-v0.0.1  First version
+v0.0.3
+* Added ES6 Component as default ```-v``` flag. Use options 5 or 6 to specify
+
+v0.0.1
+* First version
 
 ## License
 
