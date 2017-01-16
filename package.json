@@ -1,6 +1,6 @@
 {
   "name": "trot",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "command line helpers to generate react files and components",
   "main": "app.js",
   "directories": {
@@ -31,6 +31,6 @@
   },
   "homepage": "https://github.com/AdventureBear/trot#readme",
   "bin": {
-       "trot": "./trot.js"
-   }
+    "trot": "./trot.js"
+  }
 }
