@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/AdventureBear/trot/issues"
   },
-  "homepage": "https://github.com/AdventureBear/trot#readme"
+  "homepage": "https://github.com/AdventureBear/trot#readme",
+  "bin": {
+       "trot": "./trot.js"
+   }
 }
