@@ -37,7 +37,7 @@ if (program.componentName) {
   if (program.JSVersion==='6')
     template = reactComponentEs6
   else  template = reactComponentEs5
-  console.log(template)
+  // console.log(template)
 
   var result = template.replace(/\[comp\]/g, program.componentName);
 
