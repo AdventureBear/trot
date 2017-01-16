@@ -2,11 +2,19 @@
 
 This is a command line helper to create React components.
 
+## Installation
+
+    npm install -g trot
+
+## Help
+
+    trot --h
+
 ## Code Examples
 
-
 **Command Line**
-    node trot.js -c ComponentName
+
+    trot -c ComponentName
 
 **Output**
 Creates a file in the working directory:
@@ -29,10 +37,16 @@ Creates a file in the working directory:
 
     export default ComponentName
 
-**Additional Options**
-    node trot.js -c ComponentName -v 5
+**Additional Flags**
 
-The ```-v``` flag allows you to specify either ES5 or ES6 syntax.  ES6 is the default if no ```-v``` flag is used
+    trot -c ComponentName -v 5      /* Outputs ES5 Syntax */
+    trot -c ComponentName -v 6      /* Outputs ES6 Syntax */
+    trot -c ComponentName -f src    /* Specifies output folder */
+
+The ```-v``` flag allows you to specify either ES5 or ES6 syntax.
+ES6 is the default if no version flag is used
+
+The ```-f``` flag allows you to specify the output folder to match your project architecture
 
 
 ## Motivation
@@ -46,9 +60,7 @@ By using this command line interface I was able to think about coding rather tha
 
 I am still relatively new to JavaScript, Node and React development.  I'm still learning ES6. if you have suggestions for improvements, features or note any errors or corrections, please submit an issue or fork the repo and submit a pull request.
 
-## Installation
 
-    npm install trot
 
 
 ## Contributors
@@ -68,6 +80,9 @@ Open an issue or fork the rep here [Trot on Github](https://github.com/Adventure
 * Keep this list updated
 
 ## Change Log
+v1.0.0
+* Properly created a shell script that can run from command line
+
 v0.0.4 & v0.0.5
 * Added folder flag ```-f```.  Default will write into current folder, otherwise will create new directory if it does not exist
 * Updated entry file name from app.js to trot.js

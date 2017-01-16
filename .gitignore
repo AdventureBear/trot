@@ -9,6 +9,7 @@
 /node_modules
 /components/
 /new/
+npm-debug.log
 
 # if you remove the above rule, at least ignore the following:
 
