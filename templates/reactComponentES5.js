@@ -2,11 +2,12 @@
 
 var ES5 = 
 `var React = require('react')
+[import-css-file]
 
 var [comp] = React.createClass({
     render: function(){
         return (
-            <div >
+            <div [create-css-class]>
                 <h1>[comp]</h1>
             </div>
         )

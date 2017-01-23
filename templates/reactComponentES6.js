@@ -2,6 +2,7 @@
 
 var ES6 = 
 `import React, { Component, PropTypes } from 'react'
+[import-css-file]
 
 class [comp] extends Component {
     constructor(props){
@@ -10,7 +11,7 @@ class [comp] extends Component {
 
     render(){
         return (
-            <div>
+            <div [create-css-class]>
                 <h1>[comp]</h1>
             </div>
         )
