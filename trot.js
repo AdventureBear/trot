@@ -8,7 +8,12 @@ const reactComponentEs5 = require('./templates/reactComponentES5')
 const reactComponentEs6 = require('./templates/reactComponentES6')
 const cssTemplate = require('./templates/cssTemplate')
 
-let  template =""
+let template =""
+let result = ""
+let cssResult = ""
+let cssFilename = ""
+let dir = './'
+let outputName = ""
 
 //console.log(reactComponentEs5, typeof(reactComponentEs5))
 /*  Create Options list from command lines */
@@ -34,32 +39,37 @@ if (program.componentName) {
     template = reactComponentEs6
   else  template = reactComponentEs5
 
-  //build strings for directory and file outputs
-  var dir = './' + program.folder + '/'
-  var outputName = dir + program.componentName + '.js'
-
   //Create component file from template, replacing holder text with componentName
-  //Handle CSS flag (-s)
-  if (program.cssFile==='y') {
-    //add CSS Import line replacing holder text with "component-componentName"
-    result = result.replace(/\[import-css-file\]/g, ("import \'.\/" + program.componentName + ".css\'" ))
-    //add className to main render div
-    result = result.replace(/\[create-css-class\]/g, ("className=\'component-" + program.componentName.toLowerCase() + "\'" ))
+  //basic replacment regardless of CSS flag
+  result = template.replace(/\[comp\]/g, program.componentName)
 
-    //create CSS file from template
-    var cssResult =cssTemplate.replace (/\[comp\]/g, program.componentName.toLowerCase())
-    var cssFilename = dir + program.componentName + ".css"
+  //Handle CSS flag (-s)
+  //Import CSS, create CSS from Template and add className to Div of component file
+  if (program.cssFile==='y') {
+    result = result.replace(/\[import-css-file\]/g, ("import \'.\/" + program.componentName + ".css\'" ))
+    result = result.replace(/\[create-css-class\]/g, ("className=\'component-" + program.componentName.toLowerCase() + "\'" ))
+    cssResult =cssTemplate.replace (/\[comp\]/g, program.componentName.toLowerCase())
   }  else {
     //remove CSS references from template
-    var result = template.replace(/\[comp\]/g, program.componentName)
-    var result = result.replace(/\[import-css-file\]/g, '')
-    var result = result.replace(/\[create-css-class\]/g, '')
+    //result = template.replace(/\[comp\]/g, program.componentName)
+    result = result.replace(/\[import-css-file\]/g, '')
+    result = result.replace(/\[create-css-class\]/g, '')
   }
 
   //Check for -f directory and create if doesn't exist
   if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
   }
+
+
+  //build strings for directory and file outputs
+  if (program.folder) {
+    dir += program.folder + '/'
+    cssFilename = dir + program.componentName + ".css"
+  }
+
+  outputName = dir + program.componentName + '.js'
+
 
   //create component file in proper directory
   fs.writeFile(outputName, result, 'utf8', function (err) {

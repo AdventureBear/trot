@@ -1,22 +1,22 @@
 import React, { Component, PropTypes } from 'react'
-import './Test.css'
+import './Fig.css'
 
-class Test extends Component {
+class Fig extends Component {
     constructor(props){
         super(props)
     }
 
     render(){
         return (
-            <div className='component-test'>
-                <h1>Test</h1>
+            <div className='component-fig'>
+                <h1>Fig</h1>
             </div>
         )
     }
 }
 
-Test.propTypes = {
+Fig.propTypes = {
 
 };
 
-export default Test
+export default Fig
