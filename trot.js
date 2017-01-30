@@ -14,15 +14,104 @@ let cssResult = ""
 let cssFilename = ""
 let dir = './'
 let outputName = ""
+//let path =""
 
 
+let nest = (parent, children, options) => {
+
+  console.log('Nest components for parent: %s and children: %s', parent, children);
+  if (options.folder) {
+    dir = dir + options.folder + "/"
+    console.log("Folder: ", options.folder)
+  }
+  let path = dir + parent + ".js"
+
+  //Find Component file in folder
+  fs.stat(path, function(err,stats){
+    if (err) {
+      console.log("no such file or directory at ", path)
+      console.log("Please check path and component name")
+      return
+    }
+
+    //confirm it is a file
+    if (stats.isFile()) {
+
+      //fs.readFile(path,'utf8', (err, data) => {
+      //  if (err) throw err;
+      //  console.log(data.toString());
+      //})
+
+      //create a readstream interface to read line by line
+      let inputFile = fs.createReadStream(path)
+      const rl = readline.createInterface({
+        input: inputFile
+      });
+
+      let newComponent = ''
+
+      //read line by line to do the magic
+      //set flags for include/require each child
+      //set flags for rendering each child
+      addedImportOrRequire = false
+      renderedChild = false
+
+      //set Regex's to search for insertion points
+      reImport = /import/gi
+      reRequire = /require/gi
+      reDiv = /(<h1>)/gi
+
+      rl.on('line', (input) => {
+        //check if include has been set for child component
+        //if it has skip these input lines
+        //prevents multiple insertions of include files
+        if (!addedImportOrRequire) {
+          if (input.match(reImport)){
+            children.map((child)=>{
+              newComponent += "import " + child  + " from \'" + dir + child + "\'\n"
+            })
+
+          } else if (input.match(reRequire)){
+            children.map((child)=> {
+              newComponent += "var " + child + " = require(\'" + dir + child + "\') " + "\n"
+            })
+            }
+
+          addedImportOrRequire = true
+          newComponent += input + '\n'
+        } else
+
+        //search for component's render -> div and render Children
+        if (input.match(reDiv)){
+          newComponent += input + '\n'
+          children.map((child)=> {
+            newComponent += '                <' + child + ' />\n'
+          })
+        } else {
+          console.log(input)
+          newComponent += input + '\n'
+          //console.log(`Received: ${input}`)
+        }
+      })
+
+      rl.on('close', function() {
+        fs.writeFile(path, newComponent, 'utf8', function (err) {
+          if (err) return console.log(err)
+          console.log("New file created: ", outputName)
+        });
+        console.log("New Component:\n",newComponent)
+      })
+
+    }
+  })
+
+
+}
 program
-  .command('nest <parent> [otherFiles...]')
-  .description('nests child components into parent')
-  .option("-h, --children [children...]", "Child components to nest")
-  .action(function(parent, otherFiles){
-    console.log('Nest components  for %s parent and %s children', parent, otherFiles);
-  });
+  .command('nest <parent> <children...>')
+  .description('nests one or more child components into parent component')
+  .option("-f, --folder [folder]", "containing folder for all files")
+  .action(nest);
 
 
 //console.log(reactComponentEs5, typeof(reactComponentEs5))
@@ -47,7 +136,7 @@ program
 
       // Handle Version Flag "-v"
       //select EMCA version 6 as default or version 5 if flagged
-      if (program.JSVersion==='6')
+      if (this.JSVersion==='6')
         template = reactComponentEs6
       else  template = reactComponentEs5
 
@@ -110,8 +199,7 @@ program
 
 program.parse(process.argv);
 
-//TODO-DONE:  add a flag for directory
-//TODO-DONE:  add error checking if directory does not exist
-//TODO-DONE: make it a shell script (run npm install -g) to remake
-//TODO-DONE:  Add css flag to auto create CSS files
-//TODO:  Add command to create nesting & import needed components.
+//Helpful posts
+//https://edgethreesixty.co.uk/blog/read-files-line-line-node-js-using-new-es6-syntax/
+//http://stackoverflow.com/questions/29410404/readline-output-to-file-node-js
+//http://stackoverflow.com/questions/41562038/accessing-data-parsed-by-readline-fs-in-node-js-outside-of-the-callback-functi
