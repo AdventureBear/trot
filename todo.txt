@@ -4,10 +4,13 @@
 //TODO-DONE:  Add css flag to auto create CSS files - v 1.1.x
 
 //TODO-DONE:  Add command to create nesting & import needed components.
-//TODO-DOING: add child components to parent component file via command
+//TODO-DONE: add child components to parent component file via command
 //syntax should be:
 //>TODO-DONE: trot nest App -h Header Menu Results Footer
 //TODO-DONE: Will search for and open parent component App.js
-//TODO-DOING: add import/require lines for the children
-//TODO: find the render method of the parent and add each of the child components.
-//TODO:  No action needed for child component files (right?)
+//TODO-DONE: add import/require lines for the children
+//TODO-DONE: find the render method of the parent and add each of the child components.
+//TODO-DONE:  No action needed for child component files (right?)
+
+//TODO:  will check if already in destination directory
+

@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
+import Oranges from 'Oranges'
 
 
-class layout extends Component {
+class Apples extends Component {
     constructor(props){
         super(props)
     }
@@ -9,14 +10,15 @@ class layout extends Component {
     render(){
         return (
             <div >
-                <h1>layout</h1>
+                <h1>Apples</h1>
+                <Oranges />
             </div>
         )
     }
 }
 
-layout.propTypes = {
+Apples.propTypes = {
 
 };
 
-export default layout
+export default Apples

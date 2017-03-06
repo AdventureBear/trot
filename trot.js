@@ -66,19 +66,23 @@ let nest = (parent, children, options) => {
         //if it has skip these input lines
         //prevents multiple insertions of include files
         if (!addedImportOrRequire) {
+          //assumes first line is always require or import React
+          newComponent += input + '\n'
+          addedImportOrRequire = true
+
           if (input.match(reImport)){
             children.map((child)=>{
-              newComponent += "import " + child  + " from \'" + dir + child + "\'\n"
+              newComponent += "import " + child  + " from \'" + child + "\'\n"
             })
 
           } else if (input.match(reRequire)){
             children.map((child)=> {
-              newComponent += "var " + child + " = require(\'" + dir + child + "\') " + "\n"
+              newComponent += "var " + child + " = require(\'" + child + "\') " + "\n"
             })
             }
 
-          addedImportOrRequire = true
-          newComponent += input + '\n'
+
+
         } else
 
         //search for component's render -> div and render Children
@@ -112,12 +116,10 @@ program
   .description('nests one or more child components into parent component')
   .option("-f, --folder [folder]", "containing folder for all files")
   .action(nest);
-
-
 //console.log(reactComponentEs5, typeof(reactComponentEs5))
 /*  Create Options list from command lines */
 program
-  .version('0.0.1')
+//  .version('0.0.1')
   .command('comp')
   .description('create components')
   .option('-c, --componentName [name]', 'Create Component Named [Layout]', 'layout')
@@ -146,7 +148,7 @@ program
 
       //Handle CSS flag (-s)
       //Import CSS, create CSS from Template and add className to Div of component file
-      if (this.cssFile==='y') {
+      if (this.cssFile==='y' || this.cssFile==='Y') {
         result = result.replace(/\[import-css-file\]/g, ("import \'.\/" + this.componentName + ".css\'" ))
         result = result.replace(/\[create-css-class\]/g, ("className=\'component-" + this.componentName.toLowerCase() + "\'" ))
         cssResult =cssTemplate.replace (/\[comp\]/g, this.componentName.toLowerCase())
@@ -181,7 +183,7 @@ program
       });
 
       //create CSS file in proper directory
-      if (this.cssFile==='y') {
+      if (this.cssFile==='y' || this.cssFile==='Y') {
         fs.writeFile(cssFilename, cssResult, 'utf8', function (err) {
           if (err) return console.log(err)
           console.log("New CSS file created: ", cssFilename)
