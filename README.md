@@ -6,6 +6,12 @@ This is a command line helper to create React components.
 
     npm install -g trot
 
+## Usage
+
+    trot comp -c Parent     /* Creates new react components 'Parent' */
+    trot nest Parent Child  /* Nests child components in render function of parent */
+
+
 ## Help
 
     trot --h
@@ -70,7 +76,8 @@ cd into the directory where your components were created (eg /src)
 **Output**
 
 1.  Imports Child1, Child2 into parent Component
-1.  Searches for the render() function of Parent and inserts the Child components.
+1.  Searches for the render() function in the Parent component and nests the Child components.
+1.  Child components must already exist in same directory
 
 This lets you quickly see a rough sketch of your nested application.
 
