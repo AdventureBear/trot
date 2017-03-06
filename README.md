@@ -124,6 +124,8 @@ I am still relatively new to JavaScript, Node and React development.  I'm still 
 
 ## Contributors
 
+[Justin Clagg](https://github.com/justinclagg)
+
 Contributions to this project are welcome and will be recognized here,
 feel free to create an issue with suggestions for templates or command line flags to include,
 additional functionality to speed React development.
