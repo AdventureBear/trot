@@ -80,7 +80,8 @@ example:
 
 
     import React from 'react'
-    import Child1 from 'Tile'
+    import Child1 from 'Child1'
+    import Child1 from 'Child2'
 
     var Parent = React.createClass({
       render: function(){
@@ -88,6 +89,7 @@ example:
           <div >
             <h1>Parent</h1>
             <Child1 />
+            <Child2 />
           </div>
         )
       }
