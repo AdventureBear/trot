@@ -12,17 +12,16 @@ This is a command line helper to create React components.
 
 ## Code Examples
 
+### Create Components using 'comp'
+
 **Command Line**
 
-    trot -c ComponentName
+    trot comp -c ComponentName
 
 **Output**
 Creates a file in the working directory:
 
     ComponentName.js
-
-
-
 
     import React from 'react'
 
@@ -40,10 +39,10 @@ Creates a file in the working directory:
 
 **Additional Flags**
 
-    trot -c ComponentName -v 5      /* Outputs ES5 Syntax */
-    trot -c ComponentName -v 6      /* Outputs ES6 Syntax */
-    trot -c ComponentName -f src    /* Specifies output folder */
-    trot -c ComponentName -s        /* Creates matching CSS file */
+    trot comp -c ComponentName -v 5      /* Outputs ES5 Syntax */
+    trot comp -c ComponentName -v 6      /* Outputs ES6 Syntax */
+    trot comp -c ComponentName -f src    /* Specifies output folder */
+    trot comp -c ComponentName -s y      /* Creates matching CSS file */
 
 The ```-v``` flag allows you to specify either ES5 or ES6 syntax.
 ES6 is the default if no version flag is used
@@ -54,11 +53,51 @@ The ```-c``` flag will create a matched CSS file with the same name as the compo
 
 For example:
 
-    trot -c Test -f src -s
+    trot -c Test -f src -s Y
 
 Will create a ```Test.js``` component file in the ```./src``` directory, and a Test.css file in the same directory. The main ```<div>``` in the render function will have a ```className='component-test'```
 
 This methodology is modeled after Andrew Farmer's CSS approach for React components.
+
+
+### Nest Components using 'nest'
+
+**Command Line**
+cd into the directory where your components were created (eg /src)
+
+    trot nest Parent Child1 Child2
+
+**Output**
+
+1.  Imports Child1, Child2 into parent Component
+1.  Searches for the render() function of Parent and inserts the Child components.
+
+This lets you quickly see a rough sketch of your nested application.
+
+example:
+
+    Parent.js
+
+
+    import React from 'react'
+    import Child1 from 'Tile'
+
+    var Parent = React.createClass({
+      render: function(){
+       return (
+          <div >
+            <h1>Parent</h1>
+            <Child1 />
+          </div>
+        )
+      }
+    })
+
+    export default Parent
+
+** Notes on Nest command **
+1. If you are not in the directory containing the component files, you will get an error
+
 
 ## Motivation
 
@@ -91,19 +130,8 @@ Open an issue or fork the rep here [Trot on Github](https://github.com/Adventure
 * Keep this list updated
 
 ## Change Log
-v1.0.0
-* Properly created a shell script that can run from command line
-
-v0.0.4 & v0.0.5
-* Added folder flag ```-f```.  Default will write into current folder, otherwise will create new directory if it does not exist
-* Updated entry file name from app.js to trot.js
-* Cleaned up .gitignore file
-
-v0.0.3
-* Added ES6 Component as default ```-v``` flag. Use options 5 or 6 to specify
-
-v0.0.1
-* First version
+See Wiki on the Github Page:
+[Wiki-Change Log](https://github.com/AdventureBear/trot/wiki/Change-Log "Change Log")
 
 ## License
 
