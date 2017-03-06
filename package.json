@@ -1,6 +1,6 @@
 {
   "name": "trot",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "command line helpers to generate react files and components",
   "main": "app.js",
   "directories": {
