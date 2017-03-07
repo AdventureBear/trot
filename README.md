@@ -133,13 +133,6 @@ additional functionality to speed React development.
 Open an issue or fork the rep here [Trot on Github](https://github.com/AdventureBear/trot "Trot on Github")
 
 
-## ToDo List
-
-* Get a few initial users for feedback
-* Submit glaring immediate issues to github or create pull request
-* Add features & improvements
-* Keep this list updated
-
 ## Change Log
 See Wiki on the Github Page:
 [Wiki-Change Log](https://github.com/AdventureBear/trot/wiki/Change-Log "Change Log")
