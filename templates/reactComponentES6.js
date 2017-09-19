@@ -1,7 +1,8 @@
 /* ES6 Syntax */
 
 var ES6 = 
-`import React, { Component, PropTypes } from 'react'
+`//import React, { Component } from 'react';
+import PropTypes from 'prop-types'; // ES6
 [import-css-file]
 
 class [comp] extends Component {
