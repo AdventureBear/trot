@@ -25,24 +25,39 @@ This is a command line helper to create React components.
     trot comp -c ComponentName
 
 **Output**
-Creates a file in the working directory:
+Creates a file in the working directory (ES5 option available with -v 5 flag):
 
-    ComponentName.js
-
-    import React from 'react'
-
-    var ComponentName = React.createClass({
-      render: function(){
-       return (
-          <div >
-            <h1>ComponentName</h1>
-          </div>
-        )
-      }
-    })
-
+    
+    import React, { Component } from 'react'
+    import PropTypes from 'prop-types' //ES6
+    
+    
+    class ComponentName extends Component {
+        constructor(props){
+            super(props) 
+            this.state = {
+            
+            }
+        }
+    
+        render(){
+            return (
+                <div>
+                    <h1>ComponentName</h1>
+                </div>
+            )
+        }
+    }
+    
+    ComponentName.propTypes = {
+    
+    };
+    
     export default ComponentName
+    
 
+
+    
 **Additional Flags**
 
     trot comp -c ComponentName -v 5      /* Outputs ES5 Syntax */
@@ -81,7 +96,7 @@ cd into the directory where your components were created (eg /src)
 
 This lets you quickly see a rough sketch of your nested application.
 
-example:
+ES5 example (ES6 is default, see above for output):
 
     Parent.js
 
@@ -125,14 +140,16 @@ I am still relatively new to JavaScript, Node and React development.  I'm still 
 ## Contributors
 
 [Justin Clagg](https://github.com/justinclagg)
+
 [Jay Hayse](https://github.com/sayrilamar)
+
 [Suzanne Atkinson](https://github.com/adventurebear)
 
 Contributions to this project are welcome and will be recognized here,
 feel free to create an issue with suggestions for templates or command line flags to include,
 additional functionality to speed React development.
 
-Open an issue or fork the rep here [Trot on Github](https://github.com/AdventureBear/trot "Trot on Github")
+Open an issue or fork the repo here [Trot on Github](https://github.com/AdventureBear/trot "Trot on Github")
 
 
 ## Change Log
