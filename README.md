@@ -125,6 +125,8 @@ I am still relatively new to JavaScript, Node and React development.  I'm still 
 ## Contributors
 
 [Justin Clagg](https://github.com/justinclagg)
+[Jay Hayse](https://github.com/sayrilamar)
+[Suzanne Atkinson](https://github.com/adventurebear)
 
 Contributions to this project are welcome and will be recognized here,
 feel free to create an issue with suggestions for templates or command line flags to include,
