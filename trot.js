@@ -132,12 +132,12 @@ program
     if (componentName) {
       console.log('Creating React component: ')
       console.log('  - Component Name: %s ', this.componentName)
-      console.log('  - EMCAScript Version: %s ', this.JSVersion)
+      console.log('  - ECMAScript Version: %s ', this.JSVersion)
       console.log('  - Folder: %s ', this.folder)
       console.log('  - CSS file created: %s ', this.cssFile)
 
       // Handle Version Flag "-v"
-      //select EMCA version 6 as default or version 5 if flagged
+      //select ECMA version 6 as default or version 5 if flagged
       if (this.JSVersion==='6')
         template = reactComponentEs6
       else  template = reactComponentEs5
