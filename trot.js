@@ -6,9 +6,10 @@ const fs = require('fs')
 const readline = require('readline')
 const reactComponentEs5 = require('./templates/reactComponentES5')
 const reactComponentEs6 = require('./templates/reactComponentES6')
+const reactComponentES6Stateless = require('./templates/reactComponentES6Stateless')
 const cssTemplate = require('./templates/cssTemplate')
 
-let template =""
+let template = ""
 let result = ""
 let cssResult = ""
 let cssFilename = ""
@@ -27,7 +28,7 @@ let nest = (parent, children, options) => {
   let path = dir + parent + ".js"
 
   //Find Component file in folder
-  fs.stat(path, function(err,stats){
+  fs.stat(path, function (err, stats) {
     if (err) {
       console.log("no such file or directory at ", path)
       console.log("Please check path and component name")
@@ -70,40 +71,40 @@ let nest = (parent, children, options) => {
           newComponent += input + '\n'
           addedImportOrRequire = true
 
-          if (input.match(reImport)){
-            children.map((child)=>{
-              newComponent += "import " + child  + " from \'" + child + "\'\n"
+          if (input.match(reImport)) {
+            children.map((child) => {
+              newComponent += "import " + child + " from \'" + child + "\'\n"
             })
 
-          } else if (input.match(reRequire)){
-            children.map((child)=> {
+          } else if (input.match(reRequire)) {
+            children.map((child) => {
               newComponent += "var " + child + " = require(\'" + child + "\') " + "\n"
             })
-            }
+          }
 
 
 
         } else
 
-        //search for component's render -> div and render Children
-        if (input.match(reDiv)){
-          newComponent += input + '\n'
-          children.map((child)=> {
-            newComponent += '                <' + child + ' />\n'
-          })
-        } else {
-          console.log(input)
-          newComponent += input + '\n'
-          //console.log(`Received: ${input}`)
-        }
+          //search for component's render -> div and render Children
+          if (input.match(reDiv)) {
+            newComponent += input + '\n'
+            children.map((child) => {
+              newComponent += '                <' + child + ' />\n'
+            })
+          } else {
+            console.log(input)
+            newComponent += input + '\n'
+            //console.log(`Received: ${input}`)
+          }
       })
 
-      rl.on('close', function() {
+      rl.on('close', function () {
         fs.writeFile(path, newComponent, 'utf8', function (err) {
           if (err) return console.log(err)
           console.log("New file created: ", outputName)
         });
-        console.log("New Component:\n",newComponent)
+        console.log("New Component:\n", newComponent)
       })
 
     }
@@ -119,14 +120,15 @@ program
 //console.log(reactComponentEs5, typeof(reactComponentEs5))
 /*  Create Options list from command lines */
 program
-//  .version('0.0.1')
+  //  .version('0.0.1')
   .command('comp')
   .description('create components')
   .option('-c, --componentName [name]', 'Create Component Named [Layout]', 'layout')
-  .option('-v, --JSVersion [version]', 'EMCAScript version [6]',  '6')
-  .option('-f, --folder [folder]', 'Folder [./]',  './')
+  .option('-v, --JSVersion [version]', 'EMCAScript version [6]', '6')
+  .option('-f, --folder [folder]', 'Folder [./]', './')
   .option('-s, --cssFile [cssFile]', 'Create CSS [No]', 'No')
-  .action(function(componentName, options){
+  .option('--stateless', 'Stateless component')
+  .action(function (componentName, options) {
     console.log("Composing components...")
     //if component flag set (also should be default)
     if (componentName) {
@@ -135,12 +137,23 @@ program
       console.log('  - ECMAScript Version: %s ', this.JSVersion)
       console.log('  - Folder: %s ', this.folder)
       console.log('  - CSS file created: %s ', this.cssFile)
+      if (this.JSVersion === '6') console.log('  - Stateless component: %s ', this.stateless ? "Yes" : "No")
 
       // Handle Version Flag "-v"
-      //select ECMA version 6 as default or version 5 if flagged
-      if (this.JSVersion==='6')
-        template = reactComponentEs6
-      else  template = reactComponentEs5
+      //select EMCA version 6 as default or version 5 if flagged
+      if (this.JSVersion === '6') {
+        // Handle Stateless Flag "--stateless"
+        //select ES6 Class as default or functional component if flagged
+        if (this.stateless) {
+          template = reactComponentES6Stateless
+        } else {
+          template = reactComponentEs6
+        }
+
+      } else {
+        template = reactComponentEs5
+      }
+
 
       //Create component file from template, replacing holder text with componentName
       //basic replacment regardless of CSS flag
@@ -148,11 +161,11 @@ program
 
       //Handle CSS flag (-s)
       //Import CSS, create CSS from Template and add className to Div of component file
-      if (this.cssFile==='y' || this.cssFile==='Y') {
-        result = result.replace(/\[import-css-file\]/g, ("import \'.\/" + this.componentName + ".css\'" ))
-        result = result.replace(/\[create-css-class\]/g, ("className=\'component-" + this.componentName.toLowerCase() + "\'" ))
-        cssResult =cssTemplate.replace (/\[comp\]/g, this.componentName.toLowerCase())
-      }  else {
+      if (this.cssFile === 'y' || this.cssFile === 'Y') {
+        result = result.replace(/\[import-css-file\]/g, ("import \'.\/" + this.componentName + ".css\'"))
+        result = result.replace(/\[create-css-class\]/g, ("className=\'component-" + this.componentName.toLowerCase() + "\'"))
+        cssResult = cssTemplate.replace(/\[comp\]/g, this.componentName.toLowerCase())
+      } else {
         //remove CSS references from template
         //result = template.replace(/\[comp\]/g, this.componentName)
         result = result.replace(/\[import-css-file\]/g, '')
@@ -168,10 +181,10 @@ program
 
 
       //Check for -f directory and create if doesn't exist
-      if (!fs.existsSync(dir)){
+      if (!fs.existsSync(dir)) {
         console.log("Directory does not exist: " + dir)
         fs.mkdirSync(dir);
-      }else {
+      } else {
         console.log("Directory exists: " + dir)
       }
 
@@ -183,14 +196,14 @@ program
       });
 
       //create CSS file in proper directory
-      if (this.cssFile==='y' || this.cssFile==='Y') {
+      if (this.cssFile === 'y' || this.cssFile === 'Y') {
         fs.writeFile(cssFilename, cssResult, 'utf8', function (err) {
           if (err) return console.log(err)
           console.log("New CSS file created: ", cssFilename)
         });
       }
     }
-})
+  })
 
 
 
